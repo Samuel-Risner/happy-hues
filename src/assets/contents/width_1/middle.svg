@@ -14,8 +14,8 @@
   <g
      id="layer1">
     <path
-       style="fill-opacity:1;fill-rule:nonzero;stroke:none;stroke-width:0;stroke-linecap:square;stroke-linejoin:bevel;stroke-miterlimit:0;stroke-dasharray:none;stroke-opacity:1;paint-order:markers fill stroke;fill:#00ffff"
-       d="m 2.38125,0 h 8.466667 V 13.229167 H 2.38125 Z"
+       style="fill:#00ffff;fill-opacity:1;fill-rule:nonzero;stroke:none;stroke-width:0;stroke-linecap:square;stroke-linejoin:bevel;stroke-miterlimit:0;stroke-dasharray:none;stroke-opacity:1;paint-order:markers fill stroke"
+       d="M 1.8520833,0 H 11.377083 V 13.229167 H 1.8520833 Z"
        id="path2" />
   </g>
 </svg>
