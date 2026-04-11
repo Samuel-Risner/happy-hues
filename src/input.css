@@ -1,1 +1,7 @@
 @import "tailwindcss";
+
+@theme {
+  --color-space: #000000;
+  --color-anti-space: #ffffff;
+  --color-contrast: #ff00bf;
+}

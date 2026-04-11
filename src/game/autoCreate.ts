@@ -1,0 +1,75 @@
+import CONSTANTS from "../constants";
+import { randomBool, randomChoice, randomFromRange } from "../random";
+import type { T_ColorNames, T_GameGoal, T_GameJSON } from "../types";
+import Bottle from "./bottle";
+
+/**
+ * 
+ * @param gameGoal `null` -> random
+ * @param 
+ * @param 
+ * @param width `null` -> random
+ * @param difficulty `null` -> random
+ * @param amountBottles `null` -> random
+ */
+export default function autoCreate(gameGoal: T_GameGoal | null, sameHeight: boolean | null, height: [number, number], width: number | null, difficulty: null, amountBottles: number | null): T_GameJSON {
+    //
+    // random
+    //
+
+    if (gameGoal === null) gameGoal = randomChoice(CONSTANTS.SELECTABLE_GAME_GOALS);
+
+    if (sameHeight === null) sameHeight = randomBool();
+
+    if (sameHeight) {
+        const h: number = randomFromRange(height[0], height[1]);
+        height = [h, h];
+    }
+
+    if (width === null) width = randomChoice(CONSTANTS.EDIT.WIDTHS);
+
+    if (amountBottles === null) amountBottles = randomFromRange(CONSTANTS.EDIT.BOTTLES_MIN, CONSTANTS.EDIT.BOTTLES_MAX);
+
+    //
+    // - create
+    //
+
+    const bottles: Bottle[] = [];
+    const emptyBottles: number = 1;
+
+    for (let b = 0; b < amountBottles; b++) {
+        const h = randomFromRange(height[0], height[1]);
+        const contents: T_ColorNames[] = b < emptyBottles? [] : new Array(h).fill(randomChoice(CONSTANTS.COLOR_NAMES_LIST));
+
+        const bottle = new Bottle(width, h, contents, () => {});
+        bottles.push(bottle);
+    }
+
+    //
+    // - shuffle
+    //
+
+    for (let i = 0; i < 100 * bottles.length; i++) {
+        const b1 = randomChoice(bottles);
+        let b2 = randomChoice(bottles);
+        
+        while (b1 === b2) b2 = randomChoice(bottles);
+
+        b1.shuffleFrom(b2);
+    }
+
+    const bJson: [number, number, T_ColorNames | null, number, T_ColorNames[]][] = [];
+    bottles.forEach((b) => {
+        bJson.push(b.getJSON());
+    });
+
+    const j: T_GameJSON = {
+        goal: gameGoal,
+        data: {
+            spacings: null,
+            bottles: bJson
+        }
+    }
+
+    return j;
+}

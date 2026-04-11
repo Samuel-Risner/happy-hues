@@ -1,0 +1,11 @@
+{
+    "goal": "sort-simple",
+    "data": {
+        "bottles": [
+            [1, 6, null, 0, ["GREEN", "RED", "GREEN","RED", "GREEN", "RED"]],
+            [1, 6, null, 0, []],
+            [1, 6, null, 0, ["RED", "GREEN", "RED", "GREEN","RED", "GREEN"]]
+        ],
+        "spacings": null
+    }
+}
