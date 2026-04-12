@@ -4,7 +4,6 @@ import HomePage from "./pages/homePage";
 import PostGamePage from "./pages/postGamePage";
 import type { T_InitArgs, T_PageHandler, T_PageID } from "./types";
 import EditPage from "./pages/editPage";
-import EditPagePreSelect from "./pages/editPreSelectPage";
 
 const appElement = document.getElementById("app") as HTMLDivElement;
 
@@ -23,7 +22,6 @@ const pages: Record<T_PageID, PageBase> = {
     HOME: new HomePage(appElement, pageHandler),
     GAME: new GamePage(appElement, pageHandler),
     POST_GAME: new PostGamePage(appElement, pageHandler),
-    EDIT_PRE_SELECT: new EditPagePreSelect(appElement, pageHandler),
     EDIT: new EditPage(appElement, pageHandler),
 };
 

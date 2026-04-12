@@ -29,7 +29,7 @@ export type T_GameJSON = {
 // pages
 //
 
-export type T_PageID = "HOME" | "GAME" | "POST_GAME" | "EDIT_PRE_SELECT" | "EDIT";
+export type T_PageID = "HOME" | "GAME" | "POST_GAME" | "EDIT";
 export type T_InitArgs = {
     levelData?: T_GameJSON,
 };
