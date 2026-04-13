@@ -15,7 +15,7 @@ import Bottle from "./bottle";
 export default function autoCreate(
     gameGoal: T_GameGoal | null,
     sameHeight: boolean,
-    height: number | null,
+    height: number,
     width: number | null,
     difficulty: null,
     amountBottles: number | null
@@ -25,10 +25,6 @@ export default function autoCreate(
     //
 
     if (gameGoal === null) gameGoal = randomChoice(CONSTANTS.SELECTABLE_GAME_GOALS);
-
-    if (height === null) {
-        height = randomFromRange(CONSTANTS.EDIT.MIN_HEIGHT, CONSTANTS.EDIT.MAX_HEIGHT);
-    }
 
     if (width === null) width = randomChoice(CONSTANTS.EDIT.WIDTHS);
 

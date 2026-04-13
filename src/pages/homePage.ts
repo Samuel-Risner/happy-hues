@@ -109,35 +109,38 @@ function initCustom(parent: HTMLDivElement, pageHandler: T_PageHandler): void {
         if ((e.target as HTMLInputElement).checked) {
             // console.log("checked");
             heightSelectContainer.disabled = false;
+            sameHeightCheckbox.disabled = false;
         } else {
             // console.log("unchecked");
             heightSelectContainer.disabled = true;
-            sameHeightCheckbox.checked = false;
+            sameHeightCheckbox.disabled = true;
             
         }
     }, className: "peer appearance-none w-4 h-4 bg-anti-space/50 checked:bg-anti-space rounded-sm" });
     const randomText = createHTMLelement("div", randomLabel, { text: "Random", className: "text-anti-space/50 peer-checked:text-anti-space text-lg" });
 
     const sameHeightLabel = createHTMLelement("label", menu, { className: "flex flex-row justify-center items-center gap-2" });
-    const sameHeightCheckbox = createHTMLelement("input", sameHeightLabel, { checkbox: true, checked: true, onchange: (e) =>  {
+    const sameHeightCheckbox = createHTMLelement("input", sameHeightLabel, { checkbox: true, onchange: (e) =>  {
         if ((e.target as HTMLInputElement).checked) {
             // console.log("checked");
             randomCheckbox.checked = true;
             heightSelectContainer.disabled = false;
+            sameHeightText.textContent = "Different height";
         } else {
             // console.log("unchecked");
             // randomCheckbox.checked = false;
             // heightSelectContainer.disabled = true;
+            sameHeightText.textContent = "Same height";
         }
-    }, className: "peer appearance-none w-4 h-4 bg-anti-space/50 checked:bg-anti-space rounded-sm" });
-    const sameHeightText = createHTMLelement("div", sameHeightLabel, { text: "Same height", className: "text-anti-space/50 peer-checked:text-anti-space text-lg" });
+    }, className: "peer appearance-none w-4 h-4 disabled:bg-anti-space/50 bg-anti-space rounded-sm" });
+    const sameHeightText = createHTMLelement("div", sameHeightLabel, { text: "Same height", className: "peer-disabled:text-anti-space/50 text-anti-space text-lg" });
 
-    let heightBtn: number | null = null;
+    let heightBtn: number = 5;
     const allHeightBtns: HTMLButtonElement[] = [];
 
     const heightSelectContainer = createHTMLelement("button", menu, { className: "grid grid-cols-15 gap-2 text-anti-space/50 disabled:text-anti-space", disabled: false, onclick: () => { 
         randomCheckbox.checked = false;
-        sameHeightCheckbox.checked = false;
+        sameHeightCheckbox.disabled = true;
         heightSelectContainer.disabled = true;
      } });
 
@@ -146,9 +149,7 @@ function initCustom(parent: HTMLDivElement, pageHandler: T_PageHandler): void {
             text: `${i}`,
             className: "border-2 border-transparent disabled:border-anti-space rounded-lg w-9 h-9 text-lg",
             onclick: () => {
-                if (heightBtn !== null) {
-                    allHeightBtns[heightBtn - CONSTANTS.EDIT.MIN_HEIGHT].disabled = false;
-                }
+                allHeightBtns[heightBtn - CONSTANTS.EDIT.MIN_HEIGHT].disabled = false;
                 heightBtn = i;
                 btn.disabled = true;
                 // console.log(i);
@@ -158,7 +159,6 @@ function initCustom(parent: HTMLDivElement, pageHandler: T_PageHandler): void {
     }
 
     // default height
-    heightBtn = 5;
     allHeightBtns[heightBtn - CONSTANTS.EDIT.MIN_HEIGHT].disabled = true;
 
     // height menu
@@ -202,7 +202,7 @@ function initCustom(parent: HTMLDivElement, pageHandler: T_PageHandler): void {
         text: "Start",
         className: "m-4 px-2 pb-2 pt-1 rounded-lg border-2",
         onclick: () => {
-            pageHandler("GAME", { levelData: autoCreate(gameGoal, !sameHeightCheckbox.checked, heightBtn, width, null, null) });
+            pageHandler("GAME", { levelData: autoCreate(gameGoal, !(sameHeightCheckbox.checked && randomCheckbox.checked), heightBtn, width, null, null) });
         }
     });
 }
