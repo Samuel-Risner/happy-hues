@@ -11,3 +11,17 @@ export function expandOrCollapse(targetElement: HTMLDivElement, fromHeight: numb
         }
     );
 }
+
+export function animationScale(targetElement: HTMLDivElement, from: number, to: number) {
+    targetElement.animate(
+        [
+            { scale: `${from}%` },
+            { scale: `${to}%` }
+        ],
+        {
+            duration: 300,
+            easing: "ease-out",
+            fill: "forwards"
+        }
+    );
+}
