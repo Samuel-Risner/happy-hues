@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   width="500"
+   height="500"
+   viewBox="0 0 132.29166 132.29167"
+   version="1.1"
+   id="svg1"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg">
+  <defs
+     id="defs1" />
+  <g
+     id="layer1">
+    <path
+       style="fill:none;stroke:#ffffff;stroke-width:13.2315;stroke-linejoin:round;stroke-miterlimit:0;stroke-dasharray:none;stroke-opacity:1;paint-order:markers fill stroke"
+       id="path1"
+       d="M 126.86015,34.025095 A 33.293781,33.332474 0 0 1 93.56477,67.309528 33.293781,33.332474 0 0 1 60.272655,34.021819"
+       transform="matrix(0.69753419,0.7165515,-0.69753419,0.7165515,0,0)" />
+    <path
+       style="fill:none;fill-opacity:1;stroke:#ffffff;stroke-width:13.2291;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:0;stroke-dasharray:none;stroke-opacity:1;paint-order:fill markers stroke"
+       d="M 34.019465,50.931639 18.521025,67.350951"
+       id="path2" />
+    <path
+       style="fill:none;fill-opacity:1;stroke:#ffffff;stroke-width:13.2291;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:0;stroke-dasharray:none;stroke-opacity:1;paint-order:fill markers stroke"
+       d="M 87.860651,42.689581 43.523779,89.285523"
+       id="path2-8" />
+    <path
+       style="fill:none;fill-opacity:1;stroke:#ffffff;stroke-width:13.2291;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:0;stroke-dasharray:none;stroke-opacity:1;paint-order:fill markers stroke"
+       d="M 83.862651,95.904592 64.802068,115.23567"
+       id="path2-1" />
+    <path
+       style="fill:none;stroke:#ffffff;stroke-width:13.2315;stroke-linejoin:round;stroke-miterlimit:0;stroke-dasharray:none;stroke-opacity:1;paint-order:markers fill stroke"
+       id="path1-2"
+       d="M -60.40963,35.461748 A 33.293781,33.332474 0 0 1 -93.705013,68.746181 33.293781,33.332474 0 0 1 -126.99713,35.458472"
+       transform="matrix(-0.69753419,-0.7165515,0.69753419,-0.7165515,0,0)" />
+    <path
+       style="fill:none;fill-opacity:1;stroke:#ffffff;stroke-width:13.2291;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:0;stroke-dasharray:none;stroke-opacity:1;paint-order:fill markers stroke"
+       d="m 100.52036,79.486559 12.5878,-13.678498"
+       id="path2-7" />
+    <path
+       style="fill:none;fill-opacity:1;stroke:#ffffff;stroke-width:13.2291;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:0;stroke-dasharray:none;stroke-opacity:1;paint-order:fill markers stroke"
+       d="M 50.677177,35.011934 66.827129,17.92334"
+       id="path2-1-7" />
+  </g>
+</svg>
