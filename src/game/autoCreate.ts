@@ -12,18 +12,22 @@ import Bottle from "./bottle";
  * @param difficulty `null` -> random
  * @param amountBottles `null` -> random
  */
-export default function autoCreate(gameGoal: T_GameGoal | null, sameHeight: boolean | null, height: [number, number], width: number | null, difficulty: null, amountBottles: number | null): T_GameJSON {
+export default function autoCreate(
+    gameGoal: T_GameGoal | null,
+    sameHeight: boolean,
+    height: number | null,
+    width: number | null,
+    difficulty: null,
+    amountBottles: number | null
+): T_GameJSON {
     //
     // random
     //
 
     if (gameGoal === null) gameGoal = randomChoice(CONSTANTS.SELECTABLE_GAME_GOALS);
 
-    if (sameHeight === null) sameHeight = randomBool();
-
-    if (sameHeight) {
-        const h: number = randomFromRange(height[0], height[1]);
-        height = [h, h];
+    if (height === null) {
+        height = randomFromRange(CONSTANTS.EDIT.MIN_HEIGHT, CONSTANTS.EDIT.MAX_HEIGHT);
     }
 
     if (width === null) width = randomChoice(CONSTANTS.EDIT.WIDTHS);
@@ -38,10 +42,10 @@ export default function autoCreate(gameGoal: T_GameGoal | null, sameHeight: bool
     const emptyBottles: number = 1;
 
     for (let b = 0; b < amountBottles; b++) {
-        const h = randomFromRange(height[0], height[1]);
-        const contents: T_ColorNames[] = b < emptyBottles? [] : new Array(h).fill(randomChoice(CONSTANTS.COLOR_NAMES_LIST));
+        if (!sameHeight) height = randomFromRange(CONSTANTS.EDIT.MIN_HEIGHT, CONSTANTS.EDIT.MAX_HEIGHT);
+        const contents: T_ColorNames[] = b < emptyBottles? [] : new Array(height).fill(randomChoice(CONSTANTS.COLOR_NAMES_LIST));
 
-        const bottle = new Bottle(width, h, contents, () => {});
+        const bottle = new Bottle(width, height, contents, () => {});
         bottles.push(bottle);
     }
 
