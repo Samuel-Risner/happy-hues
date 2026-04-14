@@ -40,8 +40,6 @@ export default function autoCreate(
     const bottles: Bottle[] = [];
     const emptyBottles: number = 1;
 
-    console.log(randomHeight, height);
-
     for (let b = 0; b < amountBottles; b++) {
         if (randomHeight) height = randomFromRange(CONSTANTS.EDIT.MIN_HEIGHT, CONSTANTS.EDIT.MAX_HEIGHT);
         const contents: T_ColorNames[] = b < emptyBottles? [] : new Array(height).fill(randomChoice(CONSTANTS.COLOR_NAMES_LIST));
