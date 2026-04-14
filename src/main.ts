@@ -1,7 +1,6 @@
 import type PageBase from "./pages/pageBase";
 import GamePage from "./pages/gamePage";
 import HomePage from "./pages/homePage";
-import PostGamePage from "./pages/postGamePage";
 import type { T_InitArgs, T_PageHandler, T_PageID } from "./types";
 
 const appElement = document.getElementById("app") as HTMLDivElement;
@@ -20,7 +19,6 @@ const pageHandler: T_PageHandler = (pageID: T_PageID, args: T_InitArgs) => {
 const pages: Record<T_PageID, PageBase> = {
     HOME: new HomePage(appElement, pageHandler),
     GAME: new GamePage(appElement, pageHandler),
-    POST_GAME: new PostGamePage(appElement, pageHandler),
 };
 
 pages.HOME.show();
