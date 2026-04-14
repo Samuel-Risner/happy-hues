@@ -7,7 +7,7 @@ import SVG_BOTTLE_W1_TOP from "./../assets/bottles/width_1/top.svg";
 import SVG_CONTENTS_W1_BOTTOM from "./../assets/contents/width_1/bottom.svg";
 import SVG_CONTENTS_W1_MIDDLE from "./../assets/contents/width_1/middle.svg";
 
-import type { T_BottleClickFunction, T_ColorNames } from "../types";
+import type { T_BottleClickFunction, T_BottleWidth, T_ColorNames } from "../types";
 import { createHTMLelement } from "../createElement";
 import { animationScale } from "../animations";
 
@@ -26,7 +26,7 @@ export default class Bottle {
 
     private element: HTMLDivElement;
 
-    constructor(w: number, h: number, contents: T_ColorNames[], onClickFunction: T_BottleClickFunction) {
+    constructor(w: T_BottleWidth, h: number, contents: T_ColorNames[], onClickFunction: T_BottleClickFunction) {
         this.w = w;
         this.h = h + 1;
 

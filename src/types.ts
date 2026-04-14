@@ -16,6 +16,8 @@ export type T_BottleClickFunction = (b: Bottle) => void;
 export type T_GameGoal = "sort-simple" | "sort-exact" | "sort-specific";
 type T_Spacing = "grow" | "normal";
 
+export type T_BottleWidth = 1;
+
 export type T_GameJSON = {
     "goal": T_GameGoal,
     "data": {
