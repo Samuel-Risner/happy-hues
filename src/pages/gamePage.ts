@@ -2,6 +2,7 @@ import Bottle from "../game/bottle";
 import Field from "../game/field";
 import { createHTMLelement } from "../helpers/createElement";
 import removeChildren from "../helpers/removeChildren";
+import timeToString from "../helpers/timeToString";
 import type { T_InitArgs, T_PageHandler } from "../types";
 import PageBase from "./pageBase";
 
@@ -11,11 +12,37 @@ const SOURCE_CODE_LINK = document.getElementById("source-code-link") as HTMLDivE
 
 const HOME_BUTTON = createHTMLelement("button", GAME_TOOLS_MENU, { text: "home" });
 const RESET_BUTTON = createHTMLelement("button", GAME_TOOLS_MENU, { text: "reset" });
+const TIME_DISPLAY = createHTMLelement("div", GAME_TOOLS_MENU, { text: "00:00" });
+
+let timerRunning: number = 0;
+
+function startTimer() {
+    timerRunning++;
+    const start = timerRunning;
+    const startTime = new Date().getTime();
+
+    const updateTimer = async () => {
+        if (start !== timerRunning) return;
+
+        TIME_DISPLAY.textContent = timeToString(new Date().getTime() - startTime);
+
+        setTimeout(updateTimer, 500);
+    }
+
+    updateTimer();
+}
+
+function stopTimer() {
+    timerRunning++;
+    TIME_DISPLAY.textContent = "00:00";
+}
 
 export default class GamePage extends PageBase {
 
     private clickFrom: null | Bottle = null;
     private field: null | Field = null;
+
+    private timerRunning: boolean = false;
 
     constructor(parent: HTMLDivElement, pageHandler: T_PageHandler) {
         super(parent, pageHandler);
@@ -23,6 +50,8 @@ export default class GamePage extends PageBase {
         this.element.className = "flex grow";
 
         HOME_BUTTON.onclick = () => { pageHandler("HOME", {}) }
+
+        stopTimer();
     }
 
     /**
@@ -72,6 +101,12 @@ export default class GamePage extends PageBase {
         this.field = new Field(j, this.onBottleClick.bind(this), this.element);
 
         RESET_BUTTON.onclick = () => { this.init(args) }
+
+        // start time
+        if (!this.timerRunning) {
+            startTimer();
+            this.timerRunning = true;
+        }
     }
 
     show(): void {
@@ -84,6 +119,9 @@ export default class GamePage extends PageBase {
         super.hide();
         GAME_TOOLS_WRAPPER.hidden = true;
         SOURCE_CODE_LINK.hidden = false;
+
+        stopTimer();
+        this.timerRunning = false;
     }
 
 }
