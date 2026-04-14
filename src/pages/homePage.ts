@@ -126,7 +126,7 @@ function initCustom(parent: HTMLDivElement, pageHandler: T_PageHandler): void {
 
         // buttons for selecting amount
 
-        const btnContainer = createHTMLelement("div", menu, { className: "grid grid-cols-6 gap-1 justify-center items-center" });
+        const btnContainer = createHTMLelement("div", menu, { className: "grid grid-cols-7 gap-1 pt-1 justify-center items-center" });
     
         for (let i = CONSTANTS.EDIT.BOTTLES_MIN; i < 1 + CONSTANTS.EDIT.BOTTLES_MAX; i++) allButtons.push(createHTMLelement("button", btnContainer, {
             text: `${i}`,
@@ -210,7 +210,7 @@ function initCustom(parent: HTMLDivElement, pageHandler: T_PageHandler): void {
         // specific heights
         const allButtons: HTMLButtonElement[] = [];
 
-        const heightSelectContainer = createHTMLelement("button", menu, { className: "grid grid-cols-6 gap-1 text-anti-space/50 disabled:text-anti-space", disabled: height !== null, onclick: () => { 
+        const heightSelectContainer = createHTMLelement("button", menu, { className: "grid grid-cols-7 gap-1 pt-1 text-anti-space/50 disabled:text-anti-space", disabled: height !== null, onclick: () => { 
             randomCheckbox.checked = false;
             sameHeightCheckbox.disabled = true;
             heightSelectContainer.disabled = true;
