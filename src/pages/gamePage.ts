@@ -6,14 +6,24 @@ import timeToString from "../helpers/timeToString";
 import type { T_InitArgs, T_PageHandler } from "../types";
 import PageBase from "./pageBase";
 
+import RESET_SVG from "./../assets/ui/reset.svg";
+import BACK_SVG from "./../assets/ui/back.svg";
+
+// get elements from `index.html`
 const GAME_TOOLS_WRAPPER = document.getElementById("game-tools-wrapper") as HTMLDivElement;
 const GAME_TOOLS_MENU = document.getElementById("game-tools-menu") as HTMLDivElement;
 const SOURCE_CODE_LINK = document.getElementById("source-code-link") as HTMLDivElement;
 
-const HOME_BUTTON = createHTMLelement("button", GAME_TOOLS_MENU, { text: "home" });
-const RESET_BUTTON = createHTMLelement("button", GAME_TOOLS_MENU, { text: "reset" });
-const TIME_DISPLAY = createHTMLelement("div", GAME_TOOLS_MENU, { text: "00:00" });
-const VICTORY_TEXT = createHTMLelement("div", GAME_TOOLS_MENU, { text: "Victory!", hidden: true });
+// create tool elements
+const VICTORY_CONTAINER = createHTMLelement("div", GAME_TOOLS_MENU, { className: "flex grow" });
+const VICTORY_TEXT = createHTMLelement("div", VICTORY_CONTAINER, { text: "Victory!", hidden: true, className: "flex grow text-lg bg-green-400 px-2 rounded-full items-center justify-center" });
+const HOME_BUTTON = createHTMLelement("button", GAME_TOOLS_MENU, { className: "w-7 h-7" });
+const TIME_DISPLAY = createHTMLelement("div", GAME_TOOLS_MENU, { text: "00 : 00" });
+const RESET_BUTTON = createHTMLelement("button", GAME_TOOLS_MENU, { className: "w-8 h-8 disabled:opacity-50" });
+
+// images
+createHTMLelement("img", RESET_BUTTON, { src: RESET_SVG });
+createHTMLelement("img", HOME_BUTTON, { src: BACK_SVG });
 
 let timerRunning: number = 0;
 
@@ -35,7 +45,6 @@ function startTimer() {
 
 function stopTimer() {
     timerRunning++;
-    TIME_DISPLAY.textContent = "00:00";
 }
 
 export default class GamePage extends PageBase {
@@ -85,6 +94,7 @@ export default class GamePage extends PageBase {
             stopTimer();
 
             VICTORY_TEXT.hidden = false;
+            RESET_BUTTON.disabled = true;
         }
 
         return true;
@@ -126,6 +136,7 @@ export default class GamePage extends PageBase {
         VICTORY_TEXT.hidden = true;
         SOURCE_CODE_LINK.hidden = true;
         GAME_TOOLS_WRAPPER.hidden = false;
+        RESET_BUTTON.disabled = false;
     }
     
     /**

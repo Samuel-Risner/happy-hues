@@ -12,7 +12,8 @@ export function createHTMLelement<T extends keyof HTMLElementTagNameMap>(
         disabled?: boolean
         checkbox?: true,
         checked?: boolean,
-        onchange?: (this: HTMLInputElement, e: Event) => void
+        onchange?: (this: HTMLInputElement, e: Event) => void,
+        src?: string,
     }
 ): HTMLElementTagNameMap[T] {
     const e = document.createElement(tagName);
@@ -33,6 +34,8 @@ export function createHTMLelement<T extends keyof HTMLElementTagNameMap>(
     if (args.checkbox === true && tagName === "input") (e as HTMLInputElement).type = "checkbox";
     if (args.checked === true && tagName === "input") (e as HTMLInputElement).checked = true;
     if (args.onchange && tagName === "input") (e as HTMLInputElement).addEventListener("change", args.onchange);
+
+    if(args.src && tagName === "img") (e as HTMLImageElement).src = args.src;
 
     return e;
 }
