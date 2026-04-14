@@ -36,5 +36,3 @@ export function createHTMLelement<T extends keyof HTMLElementTagNameMap>(
 
     return e;
 }
-
-// console.log((e.target as HTMLInputElement).checked)

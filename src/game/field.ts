@@ -1,6 +1,6 @@
 import Bottle from "./bottle";
 import type { T_BottleClickFunction, T_GameGoal, T_GameJSON } from "../types";
-import { createHTMLelement } from "../createElement";
+import { createHTMLelement } from "../helpers/createElement";
 
 export default class Field {
 

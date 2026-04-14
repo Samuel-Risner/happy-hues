@@ -21,8 +21,8 @@ export type T_BottleWidth = 1;
 export type T_GameJSON = {
     "goal": T_GameGoal,
     "data": {
-        //          width   height  sort specific        spacing index
-        "bottles": [number, number, T_ColorNames | null, number, T_ColorNames[]][],
+        //          width          height  sort specific        spacing index
+        "bottles": [T_BottleWidth, number, T_ColorNames | null, number, T_ColorNames[]][],
         "spacings": null | T_Spacing[]
     }
 }
@@ -31,7 +31,7 @@ export type T_GameJSON = {
 // pages
 //
 
-export type T_PageID = "HOME" | "GAME" | "POST_GAME" | "EDIT";
+export type T_PageID = "HOME" | "GAME" | "POST_GAME";
 export type T_InitArgs = {
     levelData?: T_GameJSON,
 };

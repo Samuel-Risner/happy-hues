@@ -1,5 +1,5 @@
 import CONSTANTS from "../constants";
-import { randomBool, randomChoice, randomFromRange } from "../random";
+import { randomChoice, randomFromRange } from "../helpers/random";
 import type { T_BottleWidth, T_ColorNames, T_GameGoal, T_GameJSON } from "../types";
 import Bottle from "./bottle";
 

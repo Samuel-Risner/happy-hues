@@ -8,11 +8,10 @@ import SVG_CONTENTS_W1_BOTTOM from "./../assets/contents/width_1/bottom.svg";
 import SVG_CONTENTS_W1_MIDDLE from "./../assets/contents/width_1/middle.svg";
 
 import type { T_BottleClickFunction, T_BottleWidth, T_ColorNames } from "../types";
-import { createHTMLelement } from "../createElement";
-import { animationScale } from "../animations";
+import { createHTMLelement } from "../helpers/createElement";
+import { animationScale } from "../helpers/animations";
 
-const BG_SELECTED = " scale-75";
-const SCALE_SELECTED = 75;
+const SCALE_SELECTED = 85;
 
 export default class Bottle {
 
@@ -107,10 +106,8 @@ export default class Bottle {
         this.element.className = "relative ";
 
         if (selected) {
-            this.element.className += BG_SELECTED;
             animationScale(this.element, 100, SCALE_SELECTED);
         } else {
-            this.element.className = this.element.className.replace(BG_SELECTED, "");
             animationScale(this.element, SCALE_SELECTED, 100);
         }
     }

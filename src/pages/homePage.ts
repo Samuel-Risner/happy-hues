@@ -1,6 +1,6 @@
-import { expandOrCollapse } from "../animations";
+import { expandOrCollapse } from "../helpers/animations";
 import CONSTANTS from "../constants";
-import { createHTMLelement } from "../createElement";
+import { createHTMLelement } from "../helpers/createElement";
 import autoCreate from "../game/autoCreate";
 import LEVEL_DATA from "../levels/levelData";
 import type { T_BottleWidth, T_GameGoal, T_PageHandler } from "../types";
@@ -250,23 +250,6 @@ function initCustom(parent: HTMLDivElement, pageHandler: T_PageHandler): void {
     });
 }
 
-// function initEdit(parent: HTMLDivElement, pageHandler: T_PageHandler): void {
-//     const menu = createDropdownMenu(parent, "Edit");
-//     menu.className = "flex flex-col gap-2"
-
-//     createHTMLelement("button", menu, {
-//         className: "bg-gray-400 p-1 rounded-lg",
-//         text: "new",
-//         onclick: () => { pageHandler("EDIT_PRE_SELECT", {}) },
-//     });
-
-//     createHTMLelement("button", menu, {
-//         className: "bg-gray-400 p-1 rounded-lg",
-//         text: "edit",
-//         onclick: () => { pageHandler("EDIT_PRE_SELECT", {}) },
-//     });
-// }
-
 export default class HomePage extends PageBase {
 
     constructor(parent: HTMLDivElement, pageHandler: T_PageHandler) {
@@ -276,7 +259,6 @@ export default class HomePage extends PageBase {
 
         initLevelMode(this.element, pageHandler);
         initCustom(this.element, pageHandler);
-        // initEdit(this.element, pageHandler);
     }
 
 }
