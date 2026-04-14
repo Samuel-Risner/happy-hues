@@ -15,7 +15,7 @@ const SCALE_SELECTED = 85;
 
 export default class Bottle {
 
-    private w: number;
+    private w: T_BottleWidth;
     private h: number;
 
     /**
@@ -211,7 +211,7 @@ export default class Bottle {
         return true;
     }
 
-    getJSON(): [number, number, T_ColorNames | null, number, T_ColorNames[]] {
+    getJSON(): [T_BottleWidth, number, T_ColorNames | null, number, T_ColorNames[]] {
         return [this.w, this.h, null, 0, this.contents];
     }
 

@@ -63,7 +63,7 @@ export default function autoCreate(
         b1.shuffleFrom(b2);
     }
 
-    const bJson: [number, number, T_ColorNames | null, number, T_ColorNames[]][] = [];
+    const bJson: [T_BottleWidth, number, T_ColorNames | null, number, T_ColorNames[]][] = [];
     bottles.forEach((b) => {
         bJson.push(b.getJSON());
     });
