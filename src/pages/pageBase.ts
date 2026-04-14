@@ -22,6 +22,6 @@ export default abstract class PageBase {
         this.element.hidden = true;
     }
 
-    init(args: T_InitArgs) {}
+    init(_args: T_InitArgs) {}
 
 }

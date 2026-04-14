@@ -9,7 +9,7 @@ import Bottle from "./bottle";
  * @param sameHeight only relevant if `height` is `null`
  * @param height `null` -> random
  * @param width `null` -> random
- * @param difficulty `null` -> random
+ * @param _difficulty `null` -> random
  * @param amountBottles `null` -> random
  */
 export default function autoCreate(
@@ -17,7 +17,7 @@ export default function autoCreate(
     sameHeight: boolean,
     height: number | null,
     width: T_BottleWidth | null,
-    difficulty: null,
+    _difficulty: null,
     amountBottles: number | null
 ): T_GameJSON {
     //

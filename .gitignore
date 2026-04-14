@@ -1,4 +1,5 @@
 .vscode/
+dist/
+inkscape/
 node_modules/
 old/
-*.inkscape.svg
