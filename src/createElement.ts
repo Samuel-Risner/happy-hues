@@ -11,7 +11,7 @@ export function createHTMLelement<T extends keyof HTMLElementTagNameMap>(
         hidden?: boolean,
         disabled?: boolean
         checkbox?: true,
-        checked?: true,
+        checked?: boolean,
         onchange?: (this: HTMLInputElement, e: Event) => void
     }
 ): HTMLElementTagNameMap[T] {
@@ -28,7 +28,7 @@ export function createHTMLelement<T extends keyof HTMLElementTagNameMap>(
     if (args.heightPx) e.style.height = `${args.heightPx}px`;
     if (args.hidden === true) e.hidden = true;
 
-    if (args.disabled === true && tagName === "button") (e as HTMLButtonElement).disabled = true;
+    if (args.disabled === true && (tagName === "button" || tagName === "input")) (e as HTMLButtonElement).disabled = true;
     
     if (args.checkbox === true && tagName === "input") (e as HTMLInputElement).type = "checkbox";
     if (args.checked === true && tagName === "input") (e as HTMLInputElement).checked = true;
