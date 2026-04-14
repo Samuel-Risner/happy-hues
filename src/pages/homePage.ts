@@ -160,7 +160,7 @@ function initCustom(parent: HTMLDivElement, pageHandler: T_PageHandler): void {
                 }
             });
 
-            if (lastClicked === width) lastClicked = btn;
+            if (w === width) lastClicked = btn;
         }
     }
 
