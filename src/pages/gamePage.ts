@@ -1,7 +1,16 @@
 import Bottle from "../game/bottle";
 import Field from "../game/field";
+import { createHTMLelement } from "../helpers/createElement";
+import removeChildren from "../helpers/removeChildren";
 import type { T_InitArgs, T_PageHandler } from "../types";
 import PageBase from "./pageBase";
+
+const GAME_TOOLS_WRAPPER = document.getElementById("game-tools-wrapper") as HTMLDivElement;
+const GAME_TOOLS_MENU = document.getElementById("game-tools-menu") as HTMLDivElement;
+const SOURCE_CODE_LINK = document.getElementById("source-code-link") as HTMLDivElement;
+
+const HOME_BUTTON = createHTMLelement("button", GAME_TOOLS_MENU, { text: "home" });
+const RESET_BUTTON = createHTMLelement("button", GAME_TOOLS_MENU, { text: "reset" });
 
 export default class GamePage extends PageBase {
 
@@ -12,6 +21,8 @@ export default class GamePage extends PageBase {
         super(parent, pageHandler);
 
         this.element.className = "flex grow";
+
+        HOME_BUTTON.onclick = () => { pageHandler("HOME", {}) }
     }
 
     /**
@@ -48,6 +59,8 @@ export default class GamePage extends PageBase {
      * @param args Requires `levelData` to be set
      */
     init(args: T_InitArgs): void {
+        removeChildren(this.element);
+
         const j = args.levelData;
         
         // error
@@ -57,6 +70,20 @@ export default class GamePage extends PageBase {
         }
 
         this.field = new Field(j, this.onBottleClick.bind(this), this.element);
+
+        RESET_BUTTON.onclick = () => { this.init(args) }
+    }
+
+    show(): void {
+        super.show();
+        SOURCE_CODE_LINK.hidden = true;
+        GAME_TOOLS_WRAPPER.hidden = false;
+    }
+    
+    hide(): void {
+        super.hide();
+        GAME_TOOLS_WRAPPER.hidden = true;
+        SOURCE_CODE_LINK.hidden = false;
     }
 
 }

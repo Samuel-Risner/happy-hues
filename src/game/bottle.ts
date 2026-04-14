@@ -30,7 +30,7 @@ export default class Bottle {
         this.w = w;
         this.h = h + 1;
 
-        this.contents = contents;
+        this.contents = [...contents];
 
         this.element = createHTMLelement("div", null, {
             widthPx: CONSTANTS.SIZES.unit_px * this.w,
