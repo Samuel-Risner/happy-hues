@@ -10,6 +10,7 @@ import SVG_CONTENTS_W1_MIDDLE from "./../assets/contents/width_1/middle.svg";
 import type { T_BottleClickFunction, T_BottleWidth, T_ColorNames } from "../types";
 import { createHTMLelement } from "../helpers/createElement";
 import { animationScale } from "../helpers/animations";
+import removeChildren from "../helpers/removeChildren";
 
 const SCALE_SELECTED = 85;
 
@@ -31,10 +32,9 @@ export default class Bottle {
 
         this.contents = contents;
 
-
         this.element = createHTMLelement("div", null, {
             widthPx: CONSTANTS.SIZES.unit_px * this.w,
-            heightPx: CONSTANTS.SIZES.unit_px * this.h,
+            heightPx: CONSTANTS.SIZES.unit_px * (this.h - 1),
             onclick: () => { onClickFunction(this) }
         });
 
@@ -44,7 +44,7 @@ export default class Bottle {
     }
 
     /**
-     * @param imgType `0` > bottom `1` > middle `2` > top
+     * @param imgType `0` > top `1` > middle `2` > bottom
      */
     private addSVGs(imgType: 0 | 1 | 2, y: number, contents: null | T_ColorNames) {
         /**
@@ -67,7 +67,7 @@ export default class Bottle {
         }
         
         const iB = document.createElement("img");
-        iB.className = `absolute top-0 left-0`;
+        iB.className = "absolute top-0 left-0";
         iB.style.top = `${CONSTANTS.SIZES.unit_px * y}px`;
 
         if (imgType === 0) {
@@ -83,19 +83,18 @@ export default class Bottle {
     }
 
     private updateView() {
-        // remove previous contents
-        while (this.element.firstChild) this.element.removeChild(this.element.firstChild);
+        removeChildren(this.element);
 
         // add bottle
 
-        // bottom
-        this.addSVGs(0, 0, this.contents.at(this.h - 1) || null);
+        // top
+        this.addSVGs(0, 0, null);
 
         // middle
-        for (let i = 1; i < this.h - 1; i++) this.addSVGs(1, i, this.contents.at(this.h - i - 1) || null);
+        for (let i = 1; i < this.h - 2; i++) this.addSVGs(1, i, this.contents.at(this.h - i - 2) || null);
 
-        // top
-        this.addSVGs(2, this.h - 1, this.contents.at(0) || null);
+        // bottom
+        this.addSVGs(2, this.h-2, this.contents.at(0) || null);
     }
 
     addHTML(parent: HTMLDivElement) {
@@ -103,7 +102,7 @@ export default class Bottle {
     }
 
     private setMainElementClassName(selected: boolean) {
-        this.element.className = "relative ";
+        this.element.className = "relative";
 
         if (selected) {
             animationScale(this.element, 100, SCALE_SELECTED);
@@ -127,7 +126,7 @@ export default class Bottle {
         if (color != (this.contents.at(-1) || color)) return 0;
 
         // completely full
-        if (this.contents.length >= this.h - 1) return 0;
+        if (this.contents.length > this.h - 1) return 0;
 
         // how many contents can be moved
         let amountThatWillBeMoved = this.h - 1 - this.contents.length; // max amount that can be moved
