@@ -13,6 +13,7 @@ const SOURCE_CODE_LINK = document.getElementById("source-code-link") as HTMLDivE
 const HOME_BUTTON = createHTMLelement("button", GAME_TOOLS_MENU, { text: "home" });
 const RESET_BUTTON = createHTMLelement("button", GAME_TOOLS_MENU, { text: "reset" });
 const TIME_DISPLAY = createHTMLelement("div", GAME_TOOLS_MENU, { text: "00:00" });
+const VICTORY_TEXT = createHTMLelement("div", GAME_TOOLS_MENU, { text: "Victory!", hidden: true });
 
 let timerRunning: number = 0;
 
@@ -77,7 +78,14 @@ export default class GamePage extends PageBase {
         this.clickFrom.unselect();
         this.clickFrom.moveFrom(b);
         this.clickFrom = null;
-        if ((this.field as Field).checkForWin()) this.pageHandler("POST_GAME", {});
+
+        // on win
+        if ((this.field as Field).checkForWin()) {
+            this.timerRunning = false;
+            stopTimer();
+
+            VICTORY_TEXT.hidden = false;
+        }
 
         return true;
     }
@@ -109,14 +117,23 @@ export default class GamePage extends PageBase {
         }
     }
 
+    /**
+     * @override
+     */
     show(): void {
         super.show();
+
+        VICTORY_TEXT.hidden = true;
         SOURCE_CODE_LINK.hidden = true;
         GAME_TOOLS_WRAPPER.hidden = false;
     }
     
+    /**
+     * @override
+     */
     hide(): void {
         super.hide();
+
         GAME_TOOLS_WRAPPER.hidden = true;
         SOURCE_CODE_LINK.hidden = false;
 
