@@ -125,11 +125,8 @@ export default class Bottle {
         // colors do not match
         if (color != (this.contents.at(-1) || color)) return 0;
 
-        // completely full
-        if (this.contents.length > this.h - 1) return 0;
-
         // how many contents can be moved
-        let amountThatWillBeMoved = this.h - 1 - this.contents.length; // max amount that can be moved
+        let amountThatWillBeMoved = this.h - 2 - this.contents.length; // max amount that can be moved
         if (amount < amountThatWillBeMoved) amountThatWillBeMoved = amount;
 
         // add contents
@@ -155,7 +152,11 @@ export default class Bottle {
         }
 
         let amountMoved = to.moveTo(color, amount);
-        for (let i = 0; i < amountMoved; i++) this.contents.pop();
+
+        for (let i = 0; i < amountMoved; i++) {
+            console.log(amountMoved);
+            this.contents.pop();
+        }
 
         this.updateView();
     }
