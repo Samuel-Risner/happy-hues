@@ -53,10 +53,10 @@ const CONSTANTS = {
 
     EDIT: {
         WIDTHS: WIDTHS,
-        MIN_HEIGHT: 3,
-        MAX_HEIGHT: 20,
+        MIN_HEIGHT: 5,
+        MAX_HEIGHT: 18,
         BOTTLES_MIN: 3,
-        BOTTLES_MAX: 24,
+        BOTTLES_MAX: 23,
     },
 
     SELECTABLE_GAME_GOALS: SELECTABLE_GAME_GOALS,
