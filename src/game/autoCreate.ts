@@ -24,7 +24,7 @@ export default function autoCreate(
     // - randomize
     //
 
-    if (gameGoal === null) gameGoal = randomChoice(CONSTANTS.SELECTABLE_GAME_GOALS);
+    if (gameGoal === null) gameGoal = CONSTANTS.CUSTOM_DEFAULTS.GAME_MODE; // randomChoice(CONSTANTS.SELECTABLE_GAME_GOALS);
 
     const randomHeight: boolean = height === null && !sameHeight;
     if (height === null) height = randomFromRange(CONSTANTS.EDIT.MIN_HEIGHT, CONSTANTS.EDIT.MAX_HEIGHT);
@@ -67,7 +67,7 @@ export default function autoCreate(
     });
 
     const j: T_GameJSON = {
-        goal: gameGoal,
+        goal: gameGoal as T_GameMode,
         data: {
             spacings: null,
             bottles: bJson
