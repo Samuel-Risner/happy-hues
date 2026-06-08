@@ -54,7 +54,7 @@ function initLevelMode(parent: HTMLDivElement, pageHandler: T_PageHandlerFunc): 
 
         for (let j = 0; j < LEVEL_DATA[i].length; j++) {
             const enterLevelBtn = createHTMLelement("button", levelContainer, {
-                text: `${j}`,
+                text: `${j + 1}`,
                 disabled: j > 5,
                 className: "w-9 h-9 rounded-lg border-2 border-anti-space disabled:border-transparent disabled:text-anti-space/50"
             });
