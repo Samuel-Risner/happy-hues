@@ -1,6 +1,6 @@
 import CONSTANTS from "../constants";
 import { randomChoice, randomFromRange } from "../helpers/random";
-import type { T_BottleWidth, T_ColorNames, T_GameGoal, T_GameJSON } from "../types";
+import type { T_BottleWidth, T_ColorNames, T_GameMode, T_GameJSON } from "../types";
 import Bottle from "./bottle";
 
 /**
@@ -13,7 +13,7 @@ import Bottle from "./bottle";
  * @param amountBottles `null` -> random
  */
 export default function autoCreate(
-    gameGoal: T_GameGoal | null,
+    gameGoal: T_GameMode | null,
     sameHeight: boolean,
     height: number | null,
     width: T_BottleWidth | null,

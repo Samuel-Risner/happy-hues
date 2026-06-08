@@ -13,13 +13,13 @@ export type T_ColorsHEX = Record<T_ColorNames, string>;
 
 export type T_BottleClickFunction = (b: Bottle) => void;
 
-export type T_GameGoal = "sort-simple"; // | "sort-exact" | "sort-specific";
+export type T_GameMode = "sort-simple"; // | "sort-exact" | "sort-specific";
 type T_Spacing = "grow" | "normal";
 
 export type T_BottleWidth = 1;
 
 export type T_GameJSON = {
-    "goal": T_GameGoal,
+    "goal": T_GameMode,
     "data": {
         //          width          height  sort specific        spacing index
         "bottles": [T_BottleWidth, number, T_ColorNames | null, number, T_ColorNames[]][],

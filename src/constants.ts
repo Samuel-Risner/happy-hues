@@ -1,4 +1,4 @@
-import type { T_BottleWidth, T_ColorNames, T_ColorsHEX, T_GameGoal } from "./types";
+import type { T_BottleWidth, T_ColorNames, T_ColorsHEX, T_GameMode } from "./types";
 
 const SIZES = {
     unit_px: 35
@@ -28,7 +28,7 @@ for (const colorName in COLORS_HEX) {
 
 // `null` -> random
 const CUSTOM_DEFAULTS: {
-    GAME_MODE: T_GameGoal | null,
+    GAME_MODE: T_GameMode | null,
     AMOUNT_BOTTLES: number | null,
     BOTTLE_WIDTH: 1 | null,
     HEIGHT: number | null,

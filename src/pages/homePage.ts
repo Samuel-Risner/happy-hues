@@ -3,7 +3,7 @@ import CONSTANTS from "../constants";
 import { createHTMLelement } from "../helpers/createElement";
 import autoCreate from "../game/autoCreate";
 import LEVEL_DATA from "../levels/levelData";
-import type { T_BottleWidth, T_GameGoal, T_PageHandlerFunc } from "../types";
+import type { T_BottleWidth, T_GameMode, T_PageHandlerFunc } from "../types";
 import PageBase from "./pageBase";
 
 let closeLast: null | (() => void) = null;
@@ -69,7 +69,7 @@ function initLevelMode(parent: HTMLDivElement, pageHandler: T_PageHandlerFunc): 
 }
 
 function initCustom(parent: HTMLDivElement, pageHandler: T_PageHandlerFunc): void {
-    let gameGoal: T_GameGoal | null = CONSTANTS.CUSTOM_DEFAULTS.GAME_MODE;
+    let gameGoal: T_GameMode | null = CONSTANTS.CUSTOM_DEFAULTS.GAME_MODE;
     let amountBottles: number | null = CONSTANTS.CUSTOM_DEFAULTS.AMOUNT_BOTTLES;
     let width: T_BottleWidth | null = CONSTANTS.CUSTOM_DEFAULTS.BOTTLE_WIDTH;
     let height: number | null = CONSTANTS.CUSTOM_DEFAULTS.HEIGHT;
