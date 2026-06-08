@@ -7,7 +7,7 @@ import SVG_BOTTLE_W1_TOP from "./../assets/bottles/width_1/top.svg";
 import SVG_CONTENTS_W1_BOTTOM from "./../assets/contents/width_1/bottom.svg";
 import SVG_CONTENTS_W1_MIDDLE from "./../assets/contents/width_1/middle.svg";
 
-import type { T_BottleClickFunction, T_BottleWidth, T_ColorNames } from "../types";
+import type { T_BottleClickFunction, T_BottleJSON, T_BottleWidth, T_ColorNames } from "../types";
 import { createHTMLelement } from "../helpers/createElement";
 import { animationScale } from "../helpers/animations";
 import removeChildren from "../helpers/removeChildren";
@@ -169,28 +169,28 @@ export default class Bottle {
         return true;
     }
 
-    edit_addContent(color: T_ColorNames) {
-        // already full
-        if (this.contents.length >= this.h - 1) return 0;
+    // edit_addContent(color: T_ColorNames) {
+    //     // already full
+    //     if (this.contents.length >= this.h - 1) return 0;
 
-        this.contents.push(color);
+    //     this.contents.push(color);
 
-        this.updateView();
-    }
+    //     this.updateView();
+    // }
 
-    edit_removeContent() {
-        this.contents.pop();
+    // edit_removeContent() {
+    //     this.contents.pop();
 
-        this.updateView();
-    }
+    //     this.updateView();
+    // }
 
-    edit_getContents(): T_ColorNames[] {
-        const c: T_ColorNames[] = [];
-        this.contents.forEach((x) => {
-            c.push(CONSTANTS.COLOR_NAMES[x]);
-        })
-        return c;
-    }
+    // edit_getContents(): T_ColorNames[] {
+    //     const c: T_ColorNames[] = [];
+    //     this.contents.forEach((x) => {
+    //         c.push(CONSTANTS.COLOR_NAMES[x]);
+    //     })
+    //     return c;
+    // }
 
     shuffleFrom(b: Bottle): boolean {
         if (this.contents.length === 0) return false;
@@ -211,8 +211,8 @@ export default class Bottle {
         return true;
     }
 
-    getJSON(): [T_BottleWidth, number, T_ColorNames | null, number, T_ColorNames[]] {
-        return [this.w, this.h, null, 0, this.contents];
+    getJSON(): T_BottleJSON {
+        return [this.w, this.h, this.contents];
     }
 
 }

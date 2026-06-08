@@ -14,18 +14,21 @@ export type T_ColorsHEX = Record<T_ColorNames, string>;
 export type T_BottleClickFunction = (b: Bottle) => void;
 
 export type T_GameMode = "sort-simple"; // | "sort-exact" | "sort-specific";
-type T_Spacing = "grow" | "normal";
 
 export type T_BottleWidth = 1;
 
-export type T_GameJSON = {
-    "goal": T_GameMode,
-    "data": {
-        //          width          height  sort specific        spacing index
-        "bottles": [T_BottleWidth, number, T_ColorNames | null, number, T_ColorNames[]][],
-        "spacings": null | T_Spacing[]
-    }
-}
+export type T_BottleJSON = [
+    T_BottleWidth,  // width
+    number,         // height
+    T_ColorNames[], // contents
+]
+
+type T_BottleCluster = [
+    string[],       // TailwindCSS
+    T_BottleJSON[],
+]
+
+export type T_GameJSON = T_BottleCluster[];
 
 //
 // pages

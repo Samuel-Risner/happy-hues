@@ -1,6 +1,6 @@
 import CONSTANTS from "../constants";
 import { randomChoice, randomFromRange } from "../helpers/random";
-import type { T_BottleWidth, T_ColorNames, T_GameMode, T_GameJSON } from "../types";
+import type { T_BottleWidth, T_ColorNames, T_GameMode, T_GameJSON, T_BottleJSON } from "../types";
 import Bottle from "./bottle";
 
 /**
@@ -61,18 +61,21 @@ export default function autoCreate(
         b1.shuffleFrom(b2);
     }
 
-    const bJson: [T_BottleWidth, number, T_ColorNames | null, number, T_ColorNames[]][] = [];
+    //
+    // - convert to data
+    //
+
+    const bJson: T_BottleJSON[] = [];
     bottles.forEach((b) => {
         bJson.push(b.getJSON());
     });
 
-    const j: T_GameJSON = {
-        goal: gameGoal as T_GameMode,
-        data: {
-            spacings: null,
-            bottles: bJson
-        }
-    }
+    const j: T_GameJSON = [
+        [
+            [],
+            bJson
+        ]
+    ];
 
     return j;
 }

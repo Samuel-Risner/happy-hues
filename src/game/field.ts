@@ -1,69 +1,36 @@
 import Bottle from "./bottle";
-import type { T_BottleClickFunction, T_GameMode, T_GameJSON } from "../types";
+import type { T_BottleClickFunction, T_GameJSON } from "../types";
 import { createHTMLelement } from "../helpers/createElement";
 
 export default class Field {
 
-    private gameGoal: T_GameMode;
-    private data: T_GameJSON["data"];
-
+    private data: T_GameJSON;
     private bottles: Bottle[];
-
     private element: HTMLDivElement;
 
     constructor(data: T_GameJSON, onclick: T_BottleClickFunction, parent: HTMLDivElement) {
-        this.gameGoal = data.goal;
-        this.data = data.data;
-
+        this.data = data;
         this.bottles = [];
-
         this.element = createHTMLelement("div", parent, { className: "flex grow gap-2 p-4" });
 
         this.initField(onclick)
     }
 
     private initField(onclick: T_BottleClickFunction) {
-        const spacings: HTMLDivElement[] = [];
-
-        const addGrowSpacing = () => {
-            spacings.push(createHTMLelement("div", this.element, { className: "flex flex-row grow gap-2 flex-wrap justify-center items-center" }));
+        for (const clusterData of this.data) {
+            const cluster = createHTMLelement("div", this.element, { className: "flex flex-row grow gap-2 flex-wrap justify-center items-center" });
+            
+            for (const bottleData of clusterData[1]) {
+                const bottle = new Bottle(bottleData[0], bottleData[1], bottleData[2], onclick);
+                this.bottles.push(bottle);
+                bottle.addHTML(cluster);
+            }
         }
-
-        const addNormalSpacing = () => {
-            spacings.push(createHTMLelement("div", this.element));
-        }
-
-        if (this.data.spacings === null) {
-            addGrowSpacing();
-        } else {
-            this.data.spacings.forEach((spacing) => {
-                if (spacing === "grow") {
-                    addGrowSpacing();
-                } else if (spacing === "normal") {
-                    addNormalSpacing();
-                }
-            });
-        }
-
-        this.data.bottles.forEach((b) => {
-            const bottle = new Bottle(b[0], b[1], b[4], onclick);
-            this.bottles.push(bottle);
-            bottle.addHTML(spacings[b[3]]);
-        });
     }
 
-    // addBottle(bottle: Bottle) {
-    //     this.bottles.push(bottle);
-    //     bottle.addHTML(this.element);
-    // }
-
     checkForWin(): boolean {
-        if (this.gameGoal === "sort-simple") {
-            for (const bottle of this.bottles) if (!bottle.containsOnlyOneColor()) return false;
-            return true;
-        }
-
-        return false;
+        for (const bottle of this.bottles) if (!bottle.containsOnlyOneColor()) return false;
+        return true;
     }
 
 }
