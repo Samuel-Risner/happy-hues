@@ -1,3 +1,4 @@
+// used for the menus on the home page
 export function expandOrCollapse(targetElement: HTMLDivElement, fromHeight: number, toHeight: number) {
     targetElement.animate(
         [
@@ -12,6 +13,7 @@ export function expandOrCollapse(targetElement: HTMLDivElement, fromHeight: numb
     );
 }
 
+// used for the bottles when starting a game
 export function animationScale(targetElement: HTMLDivElement, from: number, to: number) {
     targetElement.animate(
         [
