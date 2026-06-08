@@ -13,7 +13,7 @@ export type T_ColorsTWCSS = Record<T_ColorNames, string>;
 
 export type T_BottleClickFunction = (b: Bottle) => void;
 
-export type T_GameGoal = "sort-simple" | "sort-exact" | "sort-specific";
+export type T_GameGoal = "sort-simple"; // | "sort-exact" | "sort-specific";
 type T_Spacing = "grow" | "normal";
 
 export type T_BottleWidth = 1;

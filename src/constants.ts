@@ -24,7 +24,7 @@ for (const colorName in COLORS_HEX) {
     COLOR_NAMES_LIST.push(colorName as T_ColorNames);
 }
 
-const SELECTABLE_GAME_GOALS: T_GameGoal[] = ["sort-simple", "sort-exact"];
+// const SELECTABLE_GAME_GOALS: T_GameGoal[] = ["sort-simple"];
 
 // `null` -> random
 const CUSTOM_DEFAULTS: {
@@ -59,7 +59,7 @@ const CONSTANTS = {
         BOTTLES_MAX: 23,
     },
 
-    SELECTABLE_GAME_GOALS: SELECTABLE_GAME_GOALS,
+    // SELECTABLE_GAME_GOALS: SELECTABLE_GAME_GOALS,
 
     CUSTOM_DEFAULTS: CUSTOM_DEFAULTS,
 }

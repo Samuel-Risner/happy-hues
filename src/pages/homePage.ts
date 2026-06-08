@@ -41,11 +41,7 @@ function createDropdownMenu(parent: HTMLDivElement, text: string): HTMLDivElemen
 function initLevelMode(parent: HTMLDivElement, pageHandler: T_PageHandler): void {
     const menu = createDropdownMenu(parent, "Level Mode");
 
-    // const btnPrevious = document.createElement("button");
-    // const btnNext = document.createElement("button");
-
     const levelElements: HTMLDivElement[] = [];
-    // const currentLevelIndex: number = 0;
 
     for (let i = 0; i < LEVEL_DATA.length; i++) {
         const level = createHTMLelement("div", menu, { hidden: true, className: "flex flex-col text-xl justify-center items-center" });
@@ -82,28 +78,28 @@ function initCustom(parent: HTMLDivElement, pageHandler: T_PageHandler): void {
     const menu = createDropdownMenu(parent, "Custom");
     menu.className = "flex flex-col grow text-lg justify-center items-center";
 
-    function createGameModeMenu() {
-        // title
-        createHTMLelement("div", menu, { text: "Select game mode", className: "pb-4 text-xl" });
+    // function createGameModeMenu() {
+    //     // title
+    //     createHTMLelement("div", menu, { text: "Select game mode", className: "pb-4 text-xl" });
 
-        let lastClicked: HTMLButtonElement | null = null;
+    //     let lastClicked: HTMLButtonElement | null = null;
 
-        for (const mode of [null, ...CONSTANTS.SELECTABLE_GAME_GOALS]) {
-            const btn = createHTMLelement("button", menu, {
-                text: mode || "Random",
-                disabled: mode === gameGoal,
-                className: "text-anti-space/50 disabled:text-anti-space",
-                onclick: () => {
-                    gameGoal = mode;
-                    btn.disabled = true;
-                    (lastClicked as HTMLButtonElement).disabled = false;
-                    lastClicked = btn;
-                }
-            });
+    //     for (const mode of [null, ...CONSTANTS.SELECTABLE_GAME_GOALS]) {
+    //         const btn = createHTMLelement("button", menu, {
+    //             text: mode || "Random",
+    //             disabled: mode === gameGoal,
+    //             className: "text-anti-space/50 disabled:text-anti-space",
+    //             onclick: () => {
+    //                 gameGoal = mode;
+    //                 btn.disabled = true;
+    //                 (lastClicked as HTMLButtonElement).disabled = false;
+    //                 lastClicked = btn;
+    //             }
+    //         });
 
-            if (mode === gameGoal) lastClicked = btn;
-        }
-    }
+    //         if (mode === gameGoal) lastClicked = btn;
+    //     }
+    // }
 
     // difficulty
 
@@ -234,7 +230,7 @@ function initCustom(parent: HTMLDivElement, pageHandler: T_PageHandler): void {
         if (height !== null) allButtons[height - CONSTANTS.EDIT.MIN_HEIGHT].disabled = true;
     }
 
-    createGameModeMenu();
+    // createGameModeMenu();
     createAmountBottlesMenu();
     createWidthMenu();
     createHeightMenu();
