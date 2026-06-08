@@ -1,6 +1,6 @@
 # happy-hues
 
-Simple color-sorting puzzle game where players organize liquids into matching tubes
+Simple color-sorting puzzle game where players organize colors into matching tubes
 
 
 # Play on itch.io
