@@ -3,7 +3,7 @@ import Field from "../game/field";
 import { createHTMLelement } from "../helpers/createElement";
 import removeChildren from "../helpers/removeChildren";
 import timeToString from "../helpers/timeToString";
-import type { T_InitArgs, T_PageHandler } from "../types";
+import type { T_InitArgs, T_PageHandlerFunc } from "../types";
 import PageBase from "./pageBase";
 
 import RESET_SVG from "./../assets/ui/reset.svg";
@@ -54,7 +54,7 @@ export default class GamePage extends PageBase {
 
     private timerRunning: boolean = false;
 
-    constructor(parent: HTMLDivElement, pageHandler: T_PageHandler) {
+    constructor(parent: HTMLDivElement, pageHandler: T_PageHandlerFunc) {
         super(parent, pageHandler);
 
         this.element.className = "flex grow";

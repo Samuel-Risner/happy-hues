@@ -1,12 +1,12 @@
-import type { T_InitArgs, T_PageHandler } from "../types";
+import type { T_InitArgs, T_PageHandlerFunc } from "../types";
 
 export default abstract class PageBase {
 
     protected element: HTMLDivElement;
 
-    protected pageHandler: T_PageHandler;
+    protected pageHandler: T_PageHandlerFunc;
 
-    constructor(parent: HTMLDivElement, pageHandler: T_PageHandler) {
+    constructor(parent: HTMLDivElement, pageHandler: T_PageHandlerFunc) {
         this.element = document.createElement("div");
         this.element.hidden = true;
         parent.appendChild(this.element);

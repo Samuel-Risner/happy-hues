@@ -5,7 +5,7 @@ import type Bottle from "./game/bottle";
 //
 
 export type T_ColorNames = "RED" | "GREEN" | "BLUE" | "YELLOW" | "ORANGE" | "PINK" | "PURPLE";
-export type T_ColorsTWCSS = Record<T_ColorNames, string>;
+export type T_ColorsHEX = Record<T_ColorNames, string>;
 
 //
 // game
@@ -35,4 +35,4 @@ export type T_PageID = "HOME" | "GAME";
 export type T_InitArgs = {
     levelData?: T_GameJSON,
 };
-export type T_PageHandler = (newPageID: T_PageID, args: T_InitArgs) => void;
+export type T_PageHandlerFunc = (newPageID: T_PageID, args: T_InitArgs) => void;

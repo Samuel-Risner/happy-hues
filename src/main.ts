@@ -1,7 +1,7 @@
 import type PageBase from "./pages/pageBase";
 import GamePage from "./pages/gamePage";
 import HomePage from "./pages/homePage";
-import type { T_InitArgs, T_PageHandler, T_PageID } from "./types";
+import type { T_InitArgs, T_PageHandlerFunc, T_PageID } from "./types";
 
 const appElement = document.getElementById("app") as HTMLDivElement;
 
@@ -10,7 +10,7 @@ const appElement = document.getElementById("app") as HTMLDivElement;
  * 
  * @param pageID ID of the page that will be shown next
  */
-const pageHandler: T_PageHandler = (pageID: T_PageID, args: T_InitArgs) => {
+const pageHandler: T_PageHandlerFunc = (pageID: T_PageID, args: T_InitArgs) => {
     for (const p in pages) pages[p as T_PageID].hide();
     pages[pageID].init(args);
     pages[pageID].show();

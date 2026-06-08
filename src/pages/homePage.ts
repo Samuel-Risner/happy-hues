@@ -3,7 +3,7 @@ import CONSTANTS from "../constants";
 import { createHTMLelement } from "../helpers/createElement";
 import autoCreate from "../game/autoCreate";
 import LEVEL_DATA from "../levels/levelData";
-import type { T_BottleWidth, T_GameGoal, T_PageHandler } from "../types";
+import type { T_BottleWidth, T_GameGoal, T_PageHandlerFunc } from "../types";
 import PageBase from "./pageBase";
 
 let closeLast: null | (() => void) = null;
@@ -38,7 +38,7 @@ function createDropdownMenu(parent: HTMLDivElement, text: string): HTMLDivElemen
     return menu;
 }
 
-function initLevelMode(parent: HTMLDivElement, pageHandler: T_PageHandler): void {
+function initLevelMode(parent: HTMLDivElement, pageHandler: T_PageHandlerFunc): void {
     const menu = createDropdownMenu(parent, "Level Mode");
 
     const levelElements: HTMLDivElement[] = [];
@@ -68,7 +68,7 @@ function initLevelMode(parent: HTMLDivElement, pageHandler: T_PageHandler): void
     levelElements[0].hidden = false;
 }
 
-function initCustom(parent: HTMLDivElement, pageHandler: T_PageHandler): void {
+function initCustom(parent: HTMLDivElement, pageHandler: T_PageHandlerFunc): void {
     let gameGoal: T_GameGoal | null = CONSTANTS.CUSTOM_DEFAULTS.GAME_MODE;
     let amountBottles: number | null = CONSTANTS.CUSTOM_DEFAULTS.AMOUNT_BOTTLES;
     let width: T_BottleWidth | null = CONSTANTS.CUSTOM_DEFAULTS.BOTTLE_WIDTH;
@@ -248,7 +248,7 @@ function initCustom(parent: HTMLDivElement, pageHandler: T_PageHandler): void {
 
 export default class HomePage extends PageBase {
 
-    constructor(parent: HTMLDivElement, pageHandler: T_PageHandler) {
+    constructor(parent: HTMLDivElement, pageHandler: T_PageHandlerFunc) {
         super(parent, pageHandler);
 
         this.element.className = "flex grow flex-col p-4 gap-4 text-2xl overflow-y-auto";

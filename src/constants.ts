@@ -1,10 +1,10 @@
-import type { T_BottleWidth, T_ColorNames, T_ColorsTWCSS, T_GameGoal } from "./types";
+import type { T_BottleWidth, T_ColorNames, T_ColorsHEX, T_GameGoal } from "./types";
 
 const SIZES = {
     unit_px: 35
 }
 
-const COLORS_HEX: T_ColorsTWCSS = {
+const COLORS_HEX: T_ColorsHEX = {
     RED: "ff0000",
     GREEN: "9ef01a",
     BLUE: "0AEFFF",
