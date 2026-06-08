@@ -24,7 +24,7 @@ function createDropdownMenu(parent: HTMLDivElement, text: string): HTMLDivElemen
     btn.onclick = () => {
         if (wrapper.clientHeight > 0) {
             // collapse
-            expandOrCollapse(wrapper, menu.clientHeight, 0);
+            expandOrCollapse(wrapper, wrapper.clientHeight, 0);
             closeLast = null;
 
         } else {
