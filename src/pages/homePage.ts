@@ -3,7 +3,7 @@ import CONSTANTS from "../constants";
 import { createHTMLelement } from "../helpers/createElement";
 import autoCreate from "../game/autoCreate";
 import LEVEL_DATA from "../levels/levelData";
-import type { T_BottleWidth, T_GameMode, T_PageHandlerFunc } from "../types";
+import type { T_BottleWidth, T_PageHandlerFunc } from "../types";
 import PageBase from "./pageBase";
 
 let closeLast: null | (() => void) = null;
@@ -69,7 +69,6 @@ function initLevelMode(parent: HTMLDivElement, pageHandler: T_PageHandlerFunc): 
 }
 
 function initCustom(parent: HTMLDivElement, pageHandler: T_PageHandlerFunc): void {
-    let gameGoal: T_GameMode | null = CONSTANTS.CUSTOM_DEFAULTS.GAME_MODE;
     let amountBottles: number | null = CONSTANTS.CUSTOM_DEFAULTS.AMOUNT_BOTTLES;
     let width: T_BottleWidth | null = CONSTANTS.CUSTOM_DEFAULTS.BOTTLE_WIDTH;
     let height: number | null = CONSTANTS.CUSTOM_DEFAULTS.HEIGHT;
@@ -77,29 +76,6 @@ function initCustom(parent: HTMLDivElement, pageHandler: T_PageHandlerFunc): voi
 
     const menu = createDropdownMenu(parent, "Custom");
     menu.className = "flex flex-col grow text-lg justify-center items-center";
-
-    // function createGameModeMenu() {
-    //     // title
-    //     createHTMLelement("div", menu, { text: "Select game mode", className: "pb-4 text-xl" });
-
-    //     let lastClicked: HTMLButtonElement | null = null;
-
-    //     for (const mode of [null, ...CONSTANTS.SELECTABLE_GAME_GOALS]) {
-    //         const btn = createHTMLelement("button", menu, {
-    //             text: mode || "Random",
-    //             disabled: mode === gameGoal,
-    //             className: "text-anti-space/50 disabled:text-anti-space",
-    //             onclick: () => {
-    //                 gameGoal = mode;
-    //                 btn.disabled = true;
-    //                 (lastClicked as HTMLButtonElement).disabled = false;
-    //                 lastClicked = btn;
-    //             }
-    //         });
-
-    //         if (mode === gameGoal) lastClicked = btn;
-    //     }
-    // }
 
     // difficulty
 
@@ -240,7 +216,7 @@ function initCustom(parent: HTMLDivElement, pageHandler: T_PageHandlerFunc): voi
         text: "Start",
         className: "m-4 mt-8 px-2 pb-2 pt-1 rounded-lg border-2",
         onclick: () => {
-            pageHandler("GAME", { levelData: autoCreate(gameGoal, sameHeight, height, width, null, amountBottles) });
+            pageHandler("GAME", { levelData: autoCreate(sameHeight, height, width, null, amountBottles) });
             // console.log(`Game goal: ${gameGoal} Amount bottles: ${amountBottles} Width: ${width}, Height: ${height} Same height: ${sameHeight}`);
         }
     });
