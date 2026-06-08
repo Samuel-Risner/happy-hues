@@ -11,14 +11,14 @@ export default class Field {
     constructor(data: T_GameJSON, onclick: T_BottleClickFunction, parent: HTMLDivElement) {
         this.data = data;
         this.bottles = [];
-        this.element = createHTMLelement("div", parent, { className: "flex grow gap-2 p-4" });
+        this.element = createHTMLelement("div", parent, { className: "flex grow gap-2 p-4 justify-center items-center" });
 
         this.initField(onclick)
     }
 
     private initField(onclick: T_BottleClickFunction) {
         for (const clusterData of this.data) {
-            const cluster = createHTMLelement("div", this.element, { className: "flex flex-row grow gap-2 flex-wrap justify-center items-center" });
+            const cluster = createHTMLelement("div", this.element, { className: `flex gap-2 flex-wrap justify-center items-center ${clusterData[0].join(" ")}` });
             
             for (const bottleData of clusterData[1]) {
                 const bottle = new Bottle(bottleData[0], bottleData[1], bottleData[2], onclick);
