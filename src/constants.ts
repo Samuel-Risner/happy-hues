@@ -4,15 +4,55 @@ const SIZES = {
     unit_px: 35
 }
 
+// const COLORS_HEX: T_ColorsHEX = {
+//     RED: "ff0000",
+//     GREEN: "9ef01a",
+//     BLUE: "0AEFFF",
+//     YELLOW: "ffff3f",
+//     ORANGE: "ff8700",
+//     PINK: "f72585",
+//     PURPLE: "7209b7",
+// }
+
+// const COLORS_HEX: T_ColorsHEX = {
+//     RED:    "ef4444",
+//     GREEN:  "84cc16",
+//     BLUE:   "38bdf8",
+//     YELLOW: "eab308",
+//     ORANGE: "f97316",
+//     PINK:   "ec4899",
+//     PURPLE: "a855f7",
+// }
+
+// const COLORS_HEX: T_ColorsHEX = {
+//     RED:    "e06c75",
+//     GREEN:  "98c379",
+//     BLUE:   "61afef",
+//     YELLOW: "e5c07b",
+//     ORANGE: "d19a66",
+//     PINK:   "c678dd",
+//     PURPLE: "b294bb",
+// }
+
 const COLORS_HEX: T_ColorsHEX = {
-    RED: "ff0000",
-    GREEN: "9ef01a",
-    BLUE: "0AEFFF",
-    YELLOW: "ffff3f",
-    ORANGE: "ff8700",
-    PINK: "f72585",
-    PURPLE: "7209b7",
+    RED:    "ff5a5f",
+    GREEN:  "7fff3a",
+    BLUE:   "40cfff",
+    YELLOW: "ffd93d",
+    ORANGE: "ff9f1c",
+    PINK:   "ff4fa3",
+    PURPLE: "b86cff",
 }
+
+// const COLORS_HEX: T_ColorsHEX = {
+//     RED:    "ff6b6b",
+//     GREEN:  "6eeb83",
+//     BLUE:   "4dabf7",
+//     YELLOW: "ffd43b",
+//     ORANGE: "ff922b",
+//     PINK:   "f06595",
+//     PURPLE: "9775fa",
+// }
 
 const COLOR_NAMES: Record<string, T_ColorNames> = {}
 for (const colorName in COLORS_HEX) {
