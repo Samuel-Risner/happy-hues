@@ -152,7 +152,6 @@ export default class Bottle {
         let amountMoved = to.moveTo(color, amount);
 
         for (let i = 0; i < amountMoved; i++) {
-            console.log(amountMoved);
             this.contents.pop();
         }
 
