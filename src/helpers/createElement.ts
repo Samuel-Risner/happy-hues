@@ -35,7 +35,7 @@ export function createHTMLelement<T extends keyof HTMLElementTagNameMap>(
     if (args.checked === true && tagName === "input") (e as HTMLInputElement).checked = true;
     if (args.onchange && tagName === "input") (e as HTMLInputElement).addEventListener("change", args.onchange);
 
-    if(args.src && tagName === "img") (e as HTMLImageElement).src = args.src;
+    if (args.src && tagName === "img") (e as HTMLImageElement).src = args.src;
 
     return e;
 }
