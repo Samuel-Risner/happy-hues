@@ -214,7 +214,7 @@ function initCustom(parent: HTMLDivElement, pageHandler: T_PageHandlerFunc): voi
     // start
     createHTMLelement("button", menu, {
         text: "Start",
-        className: "m-4 mt-8 px-2 pb-2 pt-1 rounded-lg border-2",
+        className: "m-4 mt-8 px-2 py-1 rounded-lg border-2",
         onclick: () => {
             pageHandler("GAME", { levelData: autoCreate(sameHeight, height, width, null, amountBottles) });
             // console.log(`Game goal: ${gameGoal} Amount bottles: ${amountBottles} Width: ${width}, Height: ${height} Same height: ${sameHeight}`);
