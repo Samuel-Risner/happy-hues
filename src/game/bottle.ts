@@ -29,7 +29,6 @@ export default class Bottle {
     constructor(w: T_BottleWidth, h: number, contents: T_ColorNames[], onClickFunction: T_BottleClickFunction) {
         this.w = w;
         this.h = h + 1;
-
         this.contents = [...contents];
 
         this.element = createHTMLelement("div", null, {
@@ -39,7 +38,6 @@ export default class Bottle {
         });
 
         this.setMainElementClassName(false);
-
         this.updateView();
     }
 
@@ -168,29 +166,6 @@ export default class Bottle {
     
         return true;
     }
-
-    // edit_addContent(color: T_ColorNames) {
-    //     // already full
-    //     if (this.contents.length >= this.h - 1) return 0;
-
-    //     this.contents.push(color);
-
-    //     this.updateView();
-    // }
-
-    // edit_removeContent() {
-    //     this.contents.pop();
-
-    //     this.updateView();
-    // }
-
-    // edit_getContents(): T_ColorNames[] {
-    //     const c: T_ColorNames[] = [];
-    //     this.contents.forEach((x) => {
-    //         c.push(CONSTANTS.COLOR_NAMES[x]);
-    //     })
-    //     return c;
-    // }
 
     shuffleFrom(b: Bottle): boolean {
         if (this.contents.length === 0) return false;

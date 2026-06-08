@@ -13,7 +13,7 @@ export function expandOrCollapse(targetElement: HTMLDivElement, fromHeight: numb
     );
 }
 
-// used for the bottles when starting a game
+// used for the bottles when starting a game or when (un)selecting them
 export function animationScale(targetElement: HTMLDivElement, from: number, to: number) {
     targetElement.animate(
         [

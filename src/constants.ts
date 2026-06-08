@@ -1,4 +1,4 @@
-import type { T_BottleWidth, T_ColorNames, T_ColorsHEX, T_GameMode } from "./types";
+import type { T_BottleWidth, T_BottleWidths, T_ColorNames, T_ColorsHEX } from "./types";
 
 const SIZES = {
     unit_px: 35
@@ -68,20 +68,18 @@ for (const colorName in COLORS_HEX) {
 
 // `null` -> random
 const CUSTOM_DEFAULTS: {
-    GAME_MODE: T_GameMode | null,
     AMOUNT_BOTTLES: number | null,
-    BOTTLE_WIDTH: 1 | null,
+    BOTTLE_WIDTH: T_BottleWidth | null,
     HEIGHT: number | null,
     SAME_HEIGHT: boolean,
 } = {
-    GAME_MODE: "sort-simple",
     AMOUNT_BOTTLES: 7,
     BOTTLE_WIDTH: 1,
     HEIGHT: 5,
     SAME_HEIGHT: true,
 }
 
-const WIDTHS: T_BottleWidth[] = [1];
+const WIDTHS: T_BottleWidths = [1];
 
 const CONSTANTS = {
     SIZES: SIZES,
@@ -98,8 +96,6 @@ const CONSTANTS = {
         BOTTLES_MIN: 3,
         BOTTLES_MAX: 23,
     },
-
-    // SELECTABLE_GAME_GOALS: SELECTABLE_GAME_GOALS,
 
     GAME: {
         REL_EMPTY_BOTTLES: 0.15

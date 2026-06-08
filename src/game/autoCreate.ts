@@ -1,11 +1,9 @@
 import CONSTANTS from "../constants";
 import { randomChoice, randomFromRange } from "../helpers/random";
-import type { T_BottleWidth, T_ColorNames, T_GameMode, T_GameJSON, T_BottleJSON } from "../types";
+import type { T_BottleWidth, T_ColorNames, T_GameJSON, T_BottleJSON } from "../types";
 import Bottle from "./bottle";
 
 /**
- * 
- * @param gameGoal `null` -> random
  * @param sameHeight only relevant if `height` is `null`
  * @param height `null` -> random
  * @param width `null` -> random
@@ -13,7 +11,6 @@ import Bottle from "./bottle";
  * @param amountBottles `null` -> random
  */
 export default function autoCreate(
-    gameGoal: T_GameMode | null,
     sameHeight: boolean,
     height: number | null,
     width: T_BottleWidth | null,
@@ -23,8 +20,6 @@ export default function autoCreate(
     //
     // - randomize
     //
-
-    if (gameGoal === null) gameGoal = CONSTANTS.CUSTOM_DEFAULTS.GAME_MODE; // randomChoice(CONSTANTS.SELECTABLE_GAME_GOALS);
 
     const randomHeight: boolean = height === null && !sameHeight;
     if (height === null) height = randomFromRange(CONSTANTS.EDIT.MIN_HEIGHT, CONSTANTS.EDIT.MAX_HEIGHT);
