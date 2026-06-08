@@ -38,7 +38,7 @@ export default function autoCreate(
     //
 
     const bottles: Bottle[] = [];
-    const emptyBottles: number = 1;
+    const emptyBottles: number = 1 + Math.floor(amountBottles * CONSTANTS.GAME.REL_EMPTY_BOTTLES);
 
     for (let b = 0; b < amountBottles; b++) {
         if (randomHeight) height = randomFromRange(CONSTANTS.EDIT.MIN_HEIGHT, CONSTANTS.EDIT.MAX_HEIGHT);
